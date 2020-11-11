@@ -334,6 +334,7 @@ a:hover {
   margin-right: -16px;
   float: right;
   z-index: 1;
+  text-align-last: center;
 }
 
 .nav > li {
@@ -543,6 +544,7 @@ button {
 .showScrollTop {
   font-size: 14px;
   opacity: 1;
+  background-color: white;
 }
 
 a[data-lightbox] {
@@ -755,7 +757,7 @@ h4 {
 }
 
 .white {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 .portfolio-thumb {
@@ -799,7 +801,7 @@ h4 {
 
 .btn-atomic-tangerine {
   background: #f3976c;
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 
 .btn-atomic-tangerine:hover {
