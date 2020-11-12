@@ -29,31 +29,36 @@ ExpiresDefault "access 2 days"
 # END Cache-Control Headers
 
 <IfModule mod_expires.c>
-ExpiresActive On
-AddType application/vnd.ms-fontobject .eot 
-AddType application/x-font-ttf .ttf
-AddType application/x-font-opentype .otf
-AddType application/x-font-woff .woff
-AddType image/svg+xml .svg
-ExpiresByType application/vnd.ms-fontobject "access 1 year"
-ExpiresByType application/x-font-ttf "access 1 year"
-ExpiresByType application/x-font-opentype "access 1 year"
-ExpiresByType application/x-font-woff "access 1 year"
-ExpiresByType image/svg+xml "access 1 year"
-ExpiresByType text/html "access 1 hour"
-ExpiresByType text/css "access 14 days"
-ExpiresByType text/x-javascript "access 3 weeks"
-ExpiresByType application/javascript "access 1 month"  
-ExpiresByType application/x-javascript "access 1 month"
-ExpiresByType image/gif "access 2 months"
-ExpiresByType image/png "access 2 months"
-ExpiresByType image/jpg "access 2 months"
-ExpiresByType image/jpeg "access 2 months"
-ExpiresByType image/gif "access 2 months"
-ExpiresByType application/pdf "access 1 year"
-ExpiresByType application/x-shockwave-flash "access 1 year"
-ExpiresByType image/x-icon "access 1 year"
-ExpiresDefault "access 2 days"
+  Expire Actif le
+
+  # Images
+  ExpiresByType image / jpeg "accès plus 1 an"
+  ExpiresByType image / gif "accès plus 1 an"
+  ExpiresByType image / png "accès plus 1 an"
+  ExpiresByType image / webp "accès plus 1 an"
+  ExpiresByType image / svg + xml "accès plus 1 an"
+  ExpiresByType image / x-icon "accès plus 1 an"
+
+  # Vidéo
+  ExpiresByType video / webm "accès plus 1 an"
+  ExpiresByType video / mp4 "accès plus 1 an"
+  ExpiresByType video / mpeg "accès plus 1 an"
+
+  # Polices
+  ExpiresByType font / ttf "accès plus 1 an"
+  ExpiresByType font / otf "accès plus 1 an"
+  ExpiresByType font / woff "accès plus 1 an"
+  ExpiresByType font / woff2 "accès plus 1 an"
+  ExpiresByType application / font-woff "accès plus 1 an"
+
+  # CSS, JavaScript
+  ExpiresByType text / css "accès plus 1 mois"
+  ExpiresByType text / javascript "accès plus 1 mois"
+  ExpiresByType application / javascript "accès plus 1 mois"
+
+  # Autres
+  ExpiresByType application / pdf "accès plus 1 mois"
+  ExpiresByType image / vnd.microsoft.icon "accès plus 1 an"
 </IfModule>
 
 # Gzip Compression
