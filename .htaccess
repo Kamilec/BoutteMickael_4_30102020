@@ -11,26 +11,23 @@ SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip
 #les proxies doivent donner le bon contenu
 Header append Vary User-Agent env=!dont-vary
 
-# BEGIN Cache-Control Headers
-<IfModule mod_headers.c>
- <FilesMatch "\\.(ico|jpe?g|png|gif|swf|gz|ttf)$">
- Header set Cache-Control "max-age=2592000, public"
- </FilesMatch>
- <FilesMatch "\\.(css)$">
- Header set Cache-Control "max-age=2592000, public"
- </FilesMatch>
- <FilesMatch "\\.(js)$">
- Header set Cache-Control "max-age=2592000, private"
- </FilesMatch>
-<filesMatch "\\.(html|htm)$">
-Header set Cache-Control "max-age=7200, public"
-</filesMatch>
-# Disable caching for scripts and other dynamic files
-<FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
-Header unset Cache-Control
-</FilesMatch>
-</IfModule>
-# END Cache-Control Headers
+## EXPIRE LA MISE EN CACHETE DE LA TETE ##
+
+ExpireActif le
+ExpiresByType image / jpg "accès 1 an"
+ExpiresByType image / jpeg "accès 1 an"
+ExpiresByType image / gif "accès 1 an"
+ExpiresByType image / png "accès 1 an"
+ExpiresByType image / svg "accès 1 an"
+ExpiresByType text / css "access 1 month"
+ExpiresByType application / pdf "accès 1 mois"
+ExpiresByType application / javascript "accès 1 mois"
+ExpiresByType application / x-javascript "accès 1 mois"
+ExpiresByType application / x-shockwave-flash "accès 1 mois"
+ExpiresByType image / x-icon "accès 1 an"
+ExpiresDefault "accès 2 jours"
+
+## EXPIRE LA MISE EN CACHETE DE LA TETE ##
 
 # KILL THEM ETAGS
 Header unset ETag
