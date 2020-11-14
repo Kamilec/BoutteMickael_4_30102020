@@ -11,27 +11,38 @@ SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip
 #les proxies doivent donner le bon contenu
 Header append Vary User-Agent env=!dont-vary
 
-# BEGIN Expire headers
-<IfModule mod_expires.c>
- ExpiresActive On
- ExpiresDefault "access plus 600 seconds"
- ExpiresByType image/jpg "access plus 600 seconds"
- ExpiresByType image/jpeg "access plus 600 seconds"
- ExpiresByType image/png "access plus 600 seconds"
- ExpiresByType image/gif "access plus 600 seconds"
- AddType image/x-icon .ico
- ExpiresByType image/ico "access plus 600 seconds"
- ExpiresByType image/icon "access plus 600 seconds"
- ExpiresByType image/x-icon "access plus 600 seconds"
- ExpiresByType text/css "access plus 600 seconds"
- ExpiresByType text/javascript "access plus 600 seconds"
- ExpiresByType text/html "access plus 600 seconds"
- ExpiresByType application/xhtml+xml "access plus 600 seconds"
- ExpiresByType application/javascript A259200
- ExpiresByType application/x-javascript "access plus 600 seconds"
- ExpiresByType application/x-shockwave-flash "access plus 600 seconds"
+IfModule mod_expires.c>
+  Expire Actif le
+
+  # Images
+  ExpiresByType image / jpeg "accès plus 1 an"
+  ExpiresByType image / gif "accès plus 1 an"
+  ExpiresByType image / png "accès plus 1 an"
+  ExpiresByType image / webp "accès plus 1 an"
+  ExpiresByType image / svg + xml "accès plus 1 an"
+  ExpiresByType image / x-icon "accès plus 1 an"
+
+  # Vidéo
+  ExpiresByType video / webm "accès plus 1 an"
+  ExpiresByType video / mp4 "accès plus 1 an"
+  ExpiresByType video / mpeg "accès plus 1 an"
+
+  # Polices
+  ExpiresByType font / ttf "accès plus 1 an"
+  ExpiresByType font / otf "accès plus 1 an"
+  ExpiresByType font / woff "accès plus 1 an"
+  ExpiresByType font / woff2 "accès plus 1 an"
+  ExpiresByType application / font-woff "accès plus 1 an"
+
+  # CSS, JavaScript
+  ExpiresByType text / css "accès plus 1 mois"
+  ExpiresByType text / javascript "accès plus 1 mois"
+  ExpiresByType application / javascript "accès plus 1 mois"
+
+  # Autres
+  ExpiresByType application / pdf "accès plus 1 mois"
+  ExpiresByType image / vnd.microsoft.icon "accès plus 1 an"
 </IfModule>
-# END Expire headers
 
 # BEGIN Cache-Control Headers
 <IfModule mod_headers.c>
@@ -72,3 +83,4 @@ deny from all
 
 # protection de la lecture des répertoires
 Options -Indexes
+
