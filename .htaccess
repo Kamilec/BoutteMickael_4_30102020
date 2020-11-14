@@ -14,7 +14,7 @@ Header append Vary User-Agent env=!dont-vary
 # BEGIN Expire headers
 <IfModule mod_expires.c>
  ExpiresActive On
- ExpiresDefault "access plus 600 seconds"
+ ExpiresDefault "access plus 7200 seconds"
  ExpiresByType image/jpg "access plus 600 seconds"
  ExpiresByType image/jpeg "access plus 600 seconds"
  ExpiresByType image/png "access plus 600 seconds"
@@ -72,19 +72,3 @@ deny from all
 
 # protection de la lecture des répertoires
 Options -Indexes
-
-<FilesMatch "\.(js|css|gif|jpg|jpeg|png|ico)$">
-Header unset Cookie
-Header unset Set-Cookie
-
-Header set Cache-Control "max-age=31536000"
-
-header set vary  "Accept-Encoding"
-header append vary "User-Agent"
-header append Cache-Control "public" 
-
-header append Connection "Keep-Alive"
-header append Keep-Alive "timeout=5, max=100"
-
-FileETag None
-</FilesMatch>
